@@ -1,5 +1,5 @@
 variable "notification_emails" {
-    type = list(string)
+  type = list(string)
 }
 
 variable "autoscaling_group_name" {

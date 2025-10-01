@@ -13,7 +13,7 @@ output "sysadmin1_secret_access_key" {
 }
 
 output "sysadmin1_arn" {
-  value     = aws_iam_user.sysadmin1.arn
+  value = aws_iam_user.sysadmin1.arn
 }
 
 output "sysadmin2_arn" {

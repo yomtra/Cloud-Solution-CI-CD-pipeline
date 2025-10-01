@@ -83,8 +83,8 @@ resource "aws_iam_user_group_membership" "monitoruser4_membership" {
 # Password policy
 resource "aws_iam_account_password_policy" "strict_policy" {
   minimum_password_length        = 12
-  require_uppercase_characters  = true
-  require_lowercase_characters  = true
+  require_uppercase_characters   = true
+  require_lowercase_characters   = true
   require_numbers                = true
   require_symbols                = true
   allow_users_to_change_password = true

@@ -51,7 +51,7 @@ resource "aws_vpc_security_group_ingress_rule" "app_tier_in" {
 
 #Allows traffic out to each db subnet on mysql port
 resource "aws_vpc_security_group_egress_rule" "app_tier_out" {
-  for_each =  toset(var.db_subnet_cidrs)
+  for_each = toset(var.db_subnet_cidrs)
 
   security_group_id = aws_security_group.app_tier_sg.id
 

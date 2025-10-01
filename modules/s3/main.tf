@@ -70,12 +70,12 @@ resource "aws_s3_bucket_policy" "main_bucket_policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Sid       = "AllowRootUserFullAccess"
-        Effect    = "Allow"
+        Sid    = "AllowRootUserFullAccess"
+        Effect = "Allow"
         Principal = {
           AWS = var.root_user_arn
         }
-        Action   = "s3:*"
+        Action = "s3:*"
         Resource = [
           aws_s3_bucket.main_bucket.arn,
           "${aws_s3_bucket.main_bucket.arn}/*"

@@ -12,6 +12,7 @@ terraform.tfstate.backup
 *.crt
 *.p12
 .env
+.secrets
 
 .vscode/
 .idea/

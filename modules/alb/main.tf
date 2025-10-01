@@ -7,7 +7,7 @@ resource "aws_lb" "main_alb" {
   internal           = var.internal
   load_balancer_type = "application"
   security_groups    = var.security_group_ids
-  subnets           = var.subnet_ids
+  subnets            = var.subnet_ids
 
   enable_deletion_protection = var.enable_deletion_protection
 
@@ -74,7 +74,7 @@ resource "aws_lb_target_group" "web_tier_tg" {
 # Create Target Group for App Tier (optional)
 resource "aws_lb_target_group" "app_tier_tg" {
   count = var.enable_app_tier ? 1 : 0
-  
+
   name     = "${var.alb_name}-app-tg"
   port     = var.app_tier_port
   protocol = var.app_tier_protocol
@@ -137,7 +137,7 @@ resource "aws_lb_listener" "http_listener" {
 # Create HTTPS Listener (only if SSL is enabled)
 resource "aws_lb_listener" "https_listener" {
   count = var.enable_https ? 1 : 0
-  
+
   load_balancer_arn = aws_lb.main_alb.arn
   port              = "443"
   protocol          = "HTTPS"
@@ -155,7 +155,7 @@ resource "aws_lb_listener" "https_listener" {
 # Create listener rules for path-based routing (optional)
 resource "aws_lb_listener_rule" "app_tier_rule" {
   count = var.enable_app_tier && var.enable_https ? 1 : 0
-  
+
   listener_arn = aws_lb_listener.https_listener[0].arn
   priority     = var.app_tier_rule_priority
 
@@ -176,7 +176,7 @@ resource "aws_lb_listener_rule" "app_tier_rule" {
 # Create listener rules for HTTP if HTTPS is not enabled
 resource "aws_lb_listener_rule" "app_tier_rule_http" {
   count = var.enable_app_tier && !var.enable_https ? 1 : 0
-  
+
   listener_arn = aws_lb_listener.http_listener.arn
   priority     = var.app_tier_rule_priority
 

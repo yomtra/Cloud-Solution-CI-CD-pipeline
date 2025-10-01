@@ -76,5 +76,5 @@ variable "allowed_iam_roles" {
 
 variable "root_user_arn" {
   description = "Account root user ARN"
-  type = string
+  type        = string
 }
