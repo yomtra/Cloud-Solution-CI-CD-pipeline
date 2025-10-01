@@ -29,9 +29,6 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with: 
           terraform_version: 1.5.0
-      - name: Fix Terraform permissions
-        run: chmod +x /tmp/*/terraform
-
 
     #configures AWS credentials using AWS GitHub Action
       - name: Configure AWS credentials
